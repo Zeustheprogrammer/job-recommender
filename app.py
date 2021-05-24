@@ -1,5 +1,5 @@
 from flask import Flask, flash, render_template, request, redirect, url_for, session, g
-import requests
+
 import json
 from flask_bcrypt import Bcrypt
 import os
@@ -142,7 +142,7 @@ def jobsearch():
         if request.method == 'POST':
              what = request.form['search']
              where = request.form['location']
-             req = requests.get('http://api.adzuna.com/v1/api/jobs/in/search/1?app_id=%s&app_key=%s&results_per_page=30&what=%s&where=%s&content-type=application/json',os.getenv("APP_ID"),os.getenv("APP_KEY"),what,where)
+             req = request.get('http://api.adzuna.com/v1/api/jobs/in/search/1?app_id=%s&app_key=%s&results_per_page=30&what=%s&where=%s&content-type=application/json',os.getenv("APP_ID"),os.getenv("APP_KEY"),what,where)
              data = json.loads(req.content)
 
              return render_template('jobsearch.html', data =data)
@@ -154,7 +154,7 @@ def jobsearch():
 @app.route('/jobsearch/<what>/<where>')
 def jobsearch1(what,where):
     if g.firstname:
-        req = requests.get('http://api.adzuna.com/v1/api/jobs/in/search/1?app_id=%s&app_key=%s&results_per_page=30&what=%s&where=%s&content-type=application/json', os.getenv("APP_ID"),os.getenv("APP_KEY"),what,where)
+        req = request.get('http://api.adzuna.com/v1/api/jobs/in/search/1?app_id=%s&app_key=%s&results_per_page=30&what=%s&where=%s&content-type=application/json', os.getenv("APP_ID"),os.getenv("APP_KEY"),what,where)
         data = json.loads(req)                                  
         return render_template('jobsearch.html', data=data)
     else:
