@@ -1052,3 +1052,55 @@ https://templatemo.com/tm-516-known
 
   .list { font-size: 16px; line-height: 1.6; }
   .list li { margin-bottom: 15px;  }
+header {
+
+    padding: 50px;
+
+    background-image: url(../images/business.jpg);
+
+    background-repeat: no-repeat;
+
+    height: 400px;
+
+    h2 { 
+
+        font-size: 1.2rem;
+
+    }
+
+    form { 
+
+        margin-top: 50px;
+
+        max-width: 400px;
+
+    }
+
+}
+
+.card {
+
+    margin: 25px 0;
+
+}
+
+.loading-element {
+
+    width: 100px;
+
+    height: 100px;
+
+    margin: 0 auto;
+
+    display: none;
+
+    &.loading {
+
+        display: block;
+
+    }
+
+}
+
+    
+
