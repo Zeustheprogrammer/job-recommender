@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+
+{% block head %}
+     <title>Likhi | JOB RECOMMENDER</title>
+{% endblock %}
+
+{% block navibar %}
+  <!-- MENU LINKS -->
+  <div class="collapse navbar-collapse">
+     <ul class="nav navbar-nav navbar-nav-first">
+          <li class="active"><a href="{{url_for('home')}}">Home</a></li>
+          <li><a href="{{url_for('aboutus')}}">About Us</a></li>
+          <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
+               
+               <ul class="dropdown-menu">
+                    <li><a href="{{url_for('developerinfo')}}">Developer info</a></li>
+                    <li><a href="{{url_for('terms')}}">Terms</a></li>
+               </ul>
+          </li>
+          <li><a href="{{url_for('contactus')}}">Contact Us</a></li>
+    
+     </ul>
+{% endblock %}
+
+{% block body %}
+
+     <!-- HOME -->
+     <section id="home">
+          <div class="row">
+               <div class="owl-carousel owl-theme home-slider">
+                    <div class="item item-first">
+                         <div class="caption">
+                              <div class="container">
+                                   <div class="col-md-6 col-sm-12">
+                                        <h1>Having lots of skills but wondering which job will best suit you?</h1>
+                                        <h3>Don't need to worry! we have come up with a skill recommender solution through which the fresher or the skilled person can login and find the jobs.</h3>
+                                        <a href="{{url_for('jobsearch')}}" class="section-btn btn btn-default">Lets Get Started</a>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="item item-second">
+                         <div class="caption">
+                              <div class="container">
+                                   <div class="col-md-6 col-sm-12">
+                                        <h1>Tired of searching jobs based on your skills but didn't find any!</h1>
+                                        <h3>Forget it and Relax, our chatbot will search the jobs based on your skills for you.</h3>
+                                        <a href="{{url_for('jobsearch')}}" class="section-btn btn btn-default">Lets Go</a>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="item item-third">
+                         <div class="caption">
+                              <div class="container">
+                                   <div class="col-md-6 col-sm-12">
+                                        <h1>If you don't want to work in the office for 8 hours in this pandamic period?</h1>
+                                        <h3>Cheer up, our chatbot will also recommend work from home jobs if they are available based on your skills.</h3>
+                                        <a href="{{url_for('jobsearch')}}" class="section-btn btn btn-default">Lets Get Started</a>
+                                   </div>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </div>
+     </section>
+
+     <main>
+          <section>
+               <div class="container">
+                    <div class="row">
+                         <div class="col-md-12 col-sm-12">
+                              <div class="text-center">
+                                   <h2>About us</h2>
+
+                                   <br>
+
+                                   <p class="lead">We developed an end to end web application capable of displaying the current job openings based on the skillset of the users. The users and their information are stored securely in our database and protected from data breaches. The user can interact with the chatbot and can get recommendations based on his/her skills. We used adzuna job search api to get the current job openings in the market which will fetch the data directly from the webpage.</p>
+                              </div>
+                         </div>
+                    </div>
+               </div>
+          </section>
+
+         
+          <section id="testimonial">
+               <div class="container">
+                    <div class="row">
+
+                         <div class="col-md-12 col-sm-12">
+                              <div class="section-title text-center">
+                                   <h2>Developer </h2>
+                              </div>
+                              <div class="col-md-4 col-sm-4">
+                                        <div class="item">
+                                             
+                                             <div class="tst-author">
+                                                  <h4>Shanthan</h4>
+                                                  <span>Web Developer</span>
+                                             </div>
+                                             <p>I developed this website to help the people who lost there jobs because of this pandamic or who dont want to go out and search for jobs. I used Html, Css, Javascript for the frontend and Python's Flask framework for backend of the website. The data of the users is stored in remotemysql database.</p>
+                                        <div class="tst-rating">
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star"></i>
+                                             <i class="fa fa-star"></i>
+                                        </div>
+                                   </div>
+                              </div>
+                                   
+                              
+                         </div>
+                    </div>
+               </div>
+          </section> 
+     </main>
+
+     <!-- CONTACT -->
+     <section id="contact">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-6 col-sm-12">
+                         <form id="contact-form" role="form" action="{{url_for('contactus')}}" method="post">
+                              <div class="section-title">
+                                   <h2>Contact us <small>we love conversations. let us talk!</small></h2>
+                              </div>
+
+                              <div class="col-md-12 col-sm-12">
+                                   <input type="text" class="form-control" placeholder="Enter full name" name="name" required>
+                    
+                                   <input type="email" class="form-control" placeholder="Enter email address" name="email" required>
+
+                                   <textarea class="form-control" rows="6" placeholder="Tell us about your message" name="message" required></textarea>
+                              </div>
+
+                              <div class="col-md-4 col-sm-12">
+                                   <input type="submit" class="form-control" name="send message" value="Send Message">
+                              </div>
+
+                         </form>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12">
+                         <div class="contact-image">
+                              <img src="{{url_for('static', filename = 'images/contact-1-600x400.jpg')}}" class="img-responsive" alt="Smiling Two Girls">
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+     </section>       
+{% endblock %}
+ 

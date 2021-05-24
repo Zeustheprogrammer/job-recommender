@@ -1,1 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+
+    {% block head %} {% endblock %}
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="author" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+     <link rel="stylesheet" href="{{url_for('static', filename='css/font-awesome.min.css')}}">
+     <link rel="stylesheet" href="{{url_for('static', filename='css/owl.carousel.css')}}">
+     <link rel="stylesheet" href="{{url_for('static', filename='css/owl.theme.default.min.css')}}">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+
+</head>
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+
+     <!-- PRE LOADER -->
+     <section class="preloader">
+          <div class="spinner">
+               <span class="spinner-rotate"></span>
+          </div>
+     </section>
+
+
+     <!-- MENU -->
+     <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+          <div class="container">
+
+               <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                    </button>
+
+                    <!-- lOGO TEXT HERE -->
+                    <a href="" class="navbar-brand">Job Recommender</a>
+               </div>
+               {% block navibar %}{% endblock %} 
+	       {% if g.firstname%}
+	       <div align = "right" class="row donate-sponsor">
+   		  <a type="button" class="btn btn-success mr-1" id="donate" href="{{url_for('logout')}}">LOGOUT</a>
+    	       </div>
+	    </div>
+	    {% else %}
+	    <div align = "right" class="row donate-sponsor">
+		    <a type="button" class="btn btn-success mr-1" id="donate" href="{{url_for('login')}}">LOGIN/SIGNUP</a>
+   	    </div>
+	   </div>
+	   {% endif %}
+          </div>
+     </section>
+     
+     {% with messages = get_flashed_messages(with_categories=true) %}
+     {% if messages %}
+        {% for category, message in messages %}
+           <div class="alert alert-{{ category }}">
+               <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
+                   <span aria-hidden="true">&times;</span>
+               </button>
+               {{ message }}
+           </div>
+        {% endfor %}
+     {% endif %}
+   {% endwith %}
+     {% block body %} {% endblock %}
+          <!-- FOOTER -->
+        <footer id="footer">
+            <div class="container">
+                 <div class="row">
+  
+                      <div class="col-md-4 col-sm-6">
+                           <div class="footer-info">
+                                <div class="section-title">
+                                     <h2>Headquarter</h2>
+                                </div>
+                                <address>
+                                     <p>Hyderabad, Telangana <br>India, Pincode 500001</p>
+                                </address>                            
+                                <div class="copyright-text"> 
+                                     <p>Copyright &copy; 2021 ASVS</p>                                   
+                                </div>
+                           </div>
+                      </div>
+  
+                      <div class="col-md-4 col-sm-6">
+                           <div class="footer-info">
+                                <div class="section-title">
+                                     <h2>Contact Info</h2>
+                                </div>
+                                <address>                                 
+                                     <p><a href="mailto:abbojushanthan@gmail.com">abbojushanthan@gmail.com</a></p>
+                                </address>
+                                <ul class="social-icon">
+                                   <li><a href="https://www.facebook.com/abboju.shanthan")" class="fa fa-facebook-square" attr="facebook icon"></a></li>
+                                   <li><a href="https://www.linkedin.com/in/shanthan-abboju-7ba412206" class="fa fa-linkedin"></a></li>
+                                   <li><a href="https://www.instagram.com/shanthan_2003" class="fa fa-instagram"></a></li>
+                              </ul>
+  
+                                <div class="footer_menu">
+                                     <h2>Quick Links</h2>
+                                     <ul>
+                                          <li><a href="{{url_for('home')}}">Home</a></li>
+                                          <li><a href="{{url_for('aboutus')}}">About Us</a></li>
+                                          <li><a href="{{url_for('terms')}}">Terms & Conditions</a></li>
+                                          <li><a href="{{url_for('contactus')}}">Contact Us</a></li>
+                                     </ul>
+                                </div>
+                           </div>
+                      </div>
+  
+                      <div class="col-md-4 col-sm-12">
+                           <div class="footer-info newsletter-form">
+                                <div class="section-title">
+                                     <h2>Newsletter Signup</h2>
+                                </div>
+                                <div>
+                                     <div class="form-group">
+                                          <form action="{{url_for('newsletter')}}" method="post">
+                                               <input type="email" class="form-control" placeholder="Enter your email" name="email" id="email" required>
+                                               <input type="submit" class="form-control" name="submit" id="form-submit" value="Send me">
+                                          </form>
+                                          <span><sup>*</sup> Please note - we do not spam your email.</span>
+                                     </div>
+                                </div>
+                           </div>
+                      </div>
+                      
+                 </div>
+            </div>
+       </footer>
+  
+       <!-- SCRIPTS -->
+       <script src="{{url_for('static', filename='js/jquery.js')}}"></script>
+       <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+       <script src="{{url_for('static', filename='js/owl.carousel.min.js')}}"></script>
+       <script src="{{url_for('static', filename='js/smoothscroll.js')}}"></script>
+       <script src="{{url_for('static', filename='js/custom.js')}}"></script>
+  </body>
+  </html>

@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block head %}
+     <title>Terms</title>
+{% endblock %}
+
+{% block navibar %}
+  <!-- MENU LINKS -->
+  <div class="collapse navbar-collapse">
+     <ul class="nav navbar-nav navbar-nav-first">
+         {% if g.firstname %}
+             <li ><a href="{{url_for('jobsearch')}}">Job Search</a></li>
+             {% else %}
+             <li ><a href="{{url_for('home')}}">Home</a></li>
+             {% endif %}
+          <li><a href="{{url_for('aboutus')}}">About Us</a></li>
+          <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
+               
+               <ul class="dropdown-menu">
+                    <li><a href="{{url_for('developerinfo')}}">Developer info</a></li>
+                    <li class="active"><a href="{{url_for('terms')}}">Terms</a></li>
+               </ul>
+          </li>
+          <li><a href="{{url_for('contactus')}}">Contact Us</a></li>
+    
+     </ul>
+{% endblock %}
+
+{% block body %}
+     <section>
+          <div class="container">
+               <div class="text-center">
+                    <h1>Terms and Conditions</h1>
+
+                    <br>
+
+                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo, alias.</p>
+               </div>
+          </div>
+     </section>
+
+     <section class="section-background">
+          <div class="container">
+               <div class="about-info">
+                    <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit dolorem reprehenderit.</h2>
+
+                    <figure>
+                         <figcaption>
+                              <h3>Lorem ipsum dolor sit amet.</h3>
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, deserunt beatae praesentium veniam. Aperiam assumenda quas qui officiis, minima laudantium?</p>
+
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis saepe quos repellat eum tempore magnam molestiae. Minus atque, aliquid assumenda, vero non recusandae illum optio, sint dignissimos praesentium ducimus repudiandae eius, nulla. Pariatur magnam alias est voluptatibus distinctio voluptate culpa, iste quisquam! Iure itaque rerum sequi, tenetur voluptatibus nihil quaerat, quisquam non in autem ducimus tempore impedit. Odit, corporis, praesentium.</p>
+                         </figcaption>
+                    </figure>
+
+                    <figure>
+                         <figcaption>
+                              <h3>Lorem ipsum dolor sit amet.</h3>
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, deserunt beatae praesentium veniam. Aperiam assumenda quas qui officiis, minima laudantium?</p>
+
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis saepe quos repellat eum tempore magnam molestiae. Minus atque, aliquid assumenda, vero non recusandae illum optio, sint dignissimos praesentium ducimus repudiandae eius, nulla. Pariatur magnam alias est voluptatibus distinctio voluptate culpa, iste quisquam! Iure itaque rerum sequi, tenetur voluptatibus nihil quaerat, quisquam non in autem ducimus tempore impedit. Odit, corporis, praesentium.</p>
+                         </figcaption>
+                    </figure>
+
+                    <figure>
+                         <figcaption>
+                              <h3>Lorem ipsum dolor sit amet.</h3>
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, deserunt beatae praesentium veniam. Aperiam assumenda quas qui officiis, minima laudantium?</p>
+
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis saepe quos repellat eum tempore magnam molestiae. Minus atque, aliquid assumenda, vero non recusandae illum optio, sint dignissimos praesentium ducimus repudiandae eius, nulla. Pariatur magnam alias est voluptatibus distinctio voluptate culpa, iste quisquam! Iure itaque rerum sequi, tenetur voluptatibus nihil quaerat, quisquam non in autem ducimus tempore impedit. Odit, corporis, praesentium.</p>
+                         </figcaption>
+                    </figure>
+
+                    <figure>
+                         <figcaption>
+                              <h3>Lorem ipsum dolor sit amet.</h3>
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, deserunt beatae praesentium veniam. Aperiam assumenda quas qui officiis, minima laudantium?</p>
+
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis saepe quos repellat eum tempore magnam molestiae. Minus atque, aliquid assumenda, vero non recusandae illum optio, sint dignissimos praesentium ducimus repudiandae eius, nulla. Pariatur magnam alias est voluptatibus distinctio voluptate culpa, iste quisquam! Iure itaque rerum sequi, tenetur voluptatibus nihil quaerat, quisquam non in autem ducimus tempore impedit. Odit, corporis, praesentium.</p>
+                         </figcaption>
+                    </figure>
+
+                    <figure>
+                         <figcaption>
+                              <h3>Lorem ipsum dolor sit amet.</h3>
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, deserunt beatae praesentium veniam. Aperiam assumenda quas qui officiis, minima laudantium?</p>
+
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis saepe quos repellat eum tempore magnam molestiae. Minus atque, aliquid assumenda, vero non recusandae illum optio, sint dignissimos praesentium ducimus repudiandae eius, nulla. Pariatur magnam alias est voluptatibus distinctio voluptate culpa, iste quisquam! Iure itaque rerum sequi, tenetur voluptatibus nihil quaerat, quisquam non in autem ducimus tempore impedit. Odit, corporis, praesentium.</p>
+                         </figcaption>
+                    </figure>
+
+                    <figure>
+                         <figcaption>
+                              <h3>Lorem ipsum dolor sit amet.</h3>
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus, deserunt beatae praesentium veniam. Aperiam assumenda quas qui officiis, minima laudantium?</p>
+
+                              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis saepe quos repellat eum tempore magnam molestiae. Minus atque, aliquid assumenda, vero non recusandae illum optio, sint dignissimos praesentium ducimus repudiandae eius, nulla. Pariatur magnam alias est voluptatibus distinctio voluptate culpa, iste quisquam! Iure itaque rerum sequi, tenetur voluptatibus nihil quaerat, quisquam non in autem ducimus tempore impedit. Odit, corporis, praesentium.</p>
+                         </figcaption>
+                    </figure>
+               </div>
+          </div>
+     </section>
+
+{% endblock %}
+     
