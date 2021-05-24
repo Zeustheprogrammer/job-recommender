@@ -132,7 +132,7 @@ def newsletter():
             message = "Hello " + ",\n\n"+ "Thanks for registring our newsletter at our JOB RECOMMENDER website" 
             server = smtplib.SMTP("smtp.gmail.com",587)
             server.starttls()
-            server.login(os.getenv("GMAIL"),os.getenv("GMAIL"))
+            server.login(os.getenv("GMAIL"),os.getenv("PASS"))
             server.sendmail(os.getenv("GMAIL"), email, message)
     return render_template('index.html')             
 
@@ -155,7 +155,7 @@ def jobsearch():
 def jobsearch1(what,where):
     if g.firstname:
         req = request.get('http://api.adzuna.com/v1/api/jobs/in/search/1?app_id=%s&app_key=%s&results_per_page=30&what=%s&where=%s&content-type=application/json', os.getenv("APP_ID"),os.getenv("APP_KEY"),what,where)
-        data = json.loads(req)                                  
+        data = json.loads(req.content)                                  
         return render_template('jobsearch.html', data=data)
     else:
         return redirect(url_for('login'))
