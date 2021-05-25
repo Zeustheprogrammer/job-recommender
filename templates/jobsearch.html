@@ -39,7 +39,7 @@
      </ul>
 
 {% endblock %}
-
+{% block body %}
 <body>
 
   <header>
@@ -70,29 +70,36 @@
 
 	    <div class="result-container">
 
-		    <div class="card">
+		 
 
 			    {% for data in data %}
 
-			    <div class="card-body">
+			    <div class="cards">
 
-				    <h4 class="card-title">{{data.title}} upto ₹{{data.salary_max}}</h4>
+				    <h4>{{data["title"]}} upto ₹{{data["salary_max"]}}</h4>
 
-				    <h5> {{data.location.display_name}}</h5>
+				    <h5> {{where}}</h5>
 
-				    <p class ="card-text"> {{data.description}}</p>
+				    <p> {{data['description']}}</p>
 
-				    <a href = "{{data.redirect_url}}">View Job </a>
+				    <a href = "{{data["redirect_url"]}}">View Job </a>
 
-			    </div>
+			        </div>
 
 			    {% endfor %}
 
-                     </div>
+                     
 
 	    </div>
 
     </div>
 
   </main>
-  {% endblock %}
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  intent="WELCOME"
+  chat-title="Likhi"
+  agent-id="9c109821-94de-4bc8-979f-3693d3aae226"
+  language-code="en"
+></df-messenger>
+  {% endblock %}#
