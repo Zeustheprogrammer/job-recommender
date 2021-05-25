@@ -1,5 +1,5 @@
 from flask import Flask, flash, render_template, request, redirect, url_for, session, g
-
+import requests
 import json
 from flask_bcrypt import Bcrypt
 import os
@@ -9,8 +9,7 @@ import smtplib
 from dotenv import load_dotenv
 load_dotenv()
 
-app = Flask(__name__)
-
+app= Flask(__name__)
 app.config['MYSQL_HOST'] = 'remotemysql.com'
 app.config['MYSQL_USER'] = os.getenv("MYSQL_ID")
 app.config['MYSQL_PASSWORD'] = os.getenv("MYSQL_PASS")
@@ -142,10 +141,9 @@ def jobsearch():
         if request.method == 'POST':
              what = request.form['search']
              where = request.form['location']
-             req = request.get('http://api.adzuna.com/v1/api/jobs/in/search/1?app_id=%s&app_key=%s&results_per_page=30&what=%s&where=%s&content-type=application/json',os.getenv("APP_ID"),os.getenv("APP_KEY"),what,where)
-             data = json.loads(req.content)
-
-             return render_template('jobsearch.html', data =data)
+             req=requests.get(f'https://api.adzuna.com/v1/api/jobs/in/search/1?app_id=e37ee2b8&app_key=bee4526282b85f00215f62e328cc839d&results_per_page=30&what={what}&where={where}&content-type=application/json')
+             data=json.loads(req.content)
+             return render_template('jobsearch.html', data=data["results"],where=where)
         else:
              return render_template('jobsearch.html')
     else:
@@ -154,9 +152,9 @@ def jobsearch():
 @app.route('/jobsearch/<what>/<where>')
 def jobsearch1(what,where):
     if g.firstname:
-        req = request.get('http://api.adzuna.com/v1/api/jobs/in/search/1?app_id=%s&app_key=%s&results_per_page=30&what=%s&where=%s&content-type=application/json', os.getenv("APP_ID"),os.getenv("APP_KEY"),what,where)
+        req=requests.get(f'https://api.adzuna.com/v1/api/jobs/in/search/1?app_id=e37ee2b8&app_key=bee4526282b85f00215f62e328cc839d&results_per_page=30&what={what}&where={where}&content-type=application/json')
         data = json.loads(req.content)                                  
-        return render_template('jobsearch.html', data=data)
+        return render_template('jobsearch.html', data=data["results"],where=where)
     else:
         return redirect(url_for('login'))
   
@@ -169,12 +167,7 @@ def logout():
    session.pop('firstname', None)
    g.firstname= None
   
-   return redirect(url_for('home'))
-
-
-    
-if __name__ == '__main__':
+   return redirect(url_for('home')) 
+if __name__ == "__main__":
     app.secret_key = os.urandom(24)
     app.run(host='0.0.0.0',debug = True,port = 8080)
-   
-    
