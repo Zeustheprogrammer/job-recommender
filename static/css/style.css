@@ -1100,6 +1100,16 @@ header {
 
     }
 
+	.cards {
+	background-colour: #fffff:
+	width: 60%:
+	padding:10 px;
+	margin-bottom : 5 px;
+	border-radius:2px;
+	strong{
+	font-weight:bold;
+    }
+
 }
 
     
