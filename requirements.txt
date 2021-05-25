@@ -1,5 +1,5 @@
 flask
 requests
 flask_bcrypt
-flask_mysqlldb
+flask_mysqldb
 python-dotenv
