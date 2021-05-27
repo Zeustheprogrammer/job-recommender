@@ -1,10 +1,12 @@
-FROM python:3.6.5-alpine
+FROM python:3.8-alpine
 WORKDIR /app
 ADD . /app
 
 RUN set -e; \
         apk add --no-cache --virtual .build-deps \
                 gcc \
+                libffi-dev\
+                musl-dev\
                 libc-dev \
                 linux-headers \
                 mariadb-dev \
