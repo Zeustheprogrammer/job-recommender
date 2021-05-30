@@ -78,6 +78,7 @@ def register():
             flash('Account already exists !', category='danger')
        
         else:
+            cursor = mysql.connection.cursor()
             cursor.execute('INSERT INTO user VALUES (NULL, % s, % s, % s, % s)', (firstname, lastname, email, hash_password))
             mysql.connection.commit()
             flash("Account created successfully!")
