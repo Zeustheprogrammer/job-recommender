@@ -52,6 +52,9 @@ def login():
             else:
                 flash('Username and password are not match! Please try again', category='danger')
                 return render_template('login.html')
+        else:
+            flash('Username and password are not match! Please try again', category='danger')
+            return render_template('login.html')
     else:
         return render_template('login.html')
 
