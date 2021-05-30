@@ -74,19 +74,41 @@
 
 			    {% for data in data %}
 
-			    <div class="cards">
+			    <div class="card">
+				    <div class="card-body">
 
-				    <h4>{{data["title"]}} upto ₹{{data["salary_max"]}}</h4>
+				    <h4 class="card-title">{{data["title"] | safe}}</h4>
 
-				    <h5> {{where}}</h5>
+				    <h5> {{data["location"]["display_name"] | safe}}</h5>
 
-				    <p> {{data['description']}}</p>
+				    <p class="card-text"> {{data['description'] | safe}}</p>
 
 				    <a href = "{{data["redirect_url"]}}">View Job </a>
 
-			        </div>
+			            </div>
+				
+		            </div>
+				    
+				
+				
 
 			    {% endfor %}
+		    
+
+  
+
+  
+
+  
+
+ 
+
+
+  
+
+  
+
+
 
                      
 
