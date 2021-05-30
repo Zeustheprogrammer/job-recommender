@@ -74,16 +74,16 @@
 
 			    {% for data in data %}
 
-			    <div class="card">
-				    <div class="card-body">
+			    <div class="cards">
+				 
 
-				    <h4 class="card-title">{{data["title"] | safe}}</h4>
+				    <h4>{{data["title"] | safe}}</h4>
 
 				    <h5> {{data["location"]["display_name"] | safe}}</h5>
 
-				    <p class="card-text"> {{data['description'] | safe}}</p>
+				    <p> {{data['description'] | safe}}</p><br>
 
-				    <a href = "{{data["redirect_url"]}}">View Job </a>
+				    <a href = "{{data["redirect_url"]}}" align ="right">View Job </a>
 
 			            </div>
 				
@@ -99,20 +99,7 @@
 
   
 
-  
-
- 
-
-
-  
-
-  
-
-
-
-                     
-
-	    </div>
+  </div>
 
     </div>
 
@@ -124,4 +111,15 @@
   agent-id="9c109821-94de-4bc8-979f-3693d3aae226"
   language-code="en"
 ></df-messenger>
-  {% endblock %}#
+  {% endblock %}
+
+
+  
+
+  
+
+
+
+                     
+
+	    
