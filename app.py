@@ -146,7 +146,7 @@ def jobsearch():
         if request.method == 'POST':
              what = request.form['search']
              where = request.form['location']
-             req=requests.get(f'https://api.adzuna.com/v1/api/jobs/in/search/1?app_id=e37ee2b8&app_key=bee4526282b85f00215f62e328cc839d&results_per_page=30&what={what}&where={where}&content-type=application/json')
+             req=requests.get(f'https://api.adzuna.com/v1/api/jobs/in/search/1?app_id=e37ee2b8&app_key=bee4526282b85f00215f62e328cc839d&results_per_page=50&what={what}&where={where}&content-type=application/json')
              data=json.loads(req.content)
              return render_template('jobsearch.html', data=data["results"],where=where)
         else:
@@ -157,7 +157,7 @@ def jobsearch():
 @app.route('/jobsearch/<what>/<where>')
 def jobsearch1(what,where):
     if g.firstname:
-        req=requests.get(f'https://api.adzuna.com/v1/api/jobs/in/search/1?app_id=e37ee2b8&app_key=bee4526282b85f00215f62e328cc839d&results_per_page=30&what={what}&where={where}&content-type=application/json')
+        req=requests.get(f'https://api.adzuna.com/v1/api/jobs/in/search/1?app_id=e37ee2b8&app_key=bee4526282b85f00215f62e328cc839d&results_per_page=50&what={what}&where={where}&content-type=application/json')
         data = json.loads(req.content)                                  
         return render_template('jobsearch.html', data=data["results"],where=where)
     else:
