@@ -539,7 +539,7 @@ https://templatemo.com/tm-516-known
     position: relative;
   }
 
-  .courses-image {
+   .courses-image {
     background: linear-gradient(to right, #202020, #101010);
   }
 
@@ -1078,16 +1078,35 @@ header {
 
 }
 
-.cards {
-	background-colour: #fffff:
+   .cards {
+	background-colour: #b8c8ff:
 	width : 60%:
-	padding :10 px;
-	margin: 0 auto;
-	border-radius :2 px;
-	border-color : #000000;
+	border: 1px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+	margin-top: 10px;
+	margin-left: 0;
+	margin-bottom: 10px;
+	border-radius: 12px;
+	border-style: solid;
+    border-color: #c7c7c7;
+    border-width: thin;
+    border-left: 1px
 	strong{
 	font-weight:bold;
     }
+
+   .button {
+    padding: 15px 25px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    border-color: black;
+    border: 1px;
+    border-radius: 12px;
+    }
+
 
 }
     
