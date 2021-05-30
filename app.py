@@ -45,7 +45,7 @@ def login():
             if (bcrypt.check_password_hash(temp,password)) == True :
                 session['loggedin'] = True
                 session['id'] = account[0]
-                userid=  account[0]
+             
                 session['firstname'] = account[1]            
                 flash('Success! You are logged in as:' + session['firstname'])
                 return redirect(url_for('jobsearch'))
@@ -61,7 +61,7 @@ def login():
    
 @app.route('/register', methods =['GET', 'POST'])
 def register():
-    msg = ''
+
     if request.method == 'POST' :
         firstname = request.form['firstname']
         lastname = request.form['lastname']
@@ -128,6 +128,7 @@ def newsletter():
             flash('Account already exists !', category='danger')
        
         else:
+            cursor = mysql.connection.cursor()
             cursor.execute('INSERT INTO newsletter VALUES (NULL, % s)', (email))
             mysql.connection.commit()
             flash("Successfully signed up for newsletter!")
