@@ -1076,31 +1076,9 @@ header {
 
     }
 
-
-
-.card {
-
-    margin: 25px 0;
-
 }
 
-.loading-element {
-
-    width: 100px;
-
-    height: 100px;
-
-    margin: 0 auto;
-
-    display: none;
-
-    &.loading {
-
-        display: block;
-
-    }
-
-	.cards {
+.cards {
 	background-colour: #fffff:
 	width: 60%:
 	padding:10 px;
@@ -1110,7 +1088,20 @@ header {
 	font-weight:bold;
     }
 
-}
 
     
 
+
+
+
+
+  
+	
+
+   
+
+    
+
+    
+
+        
