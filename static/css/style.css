@@ -1084,6 +1084,7 @@ header {
 	padding :10 px;
 	margin: 0 auto;
 	border-radius :2 px;
+	border-color : #000000;
 	strong{
 	font-weight:bold;
     }
