@@ -1080,10 +1080,10 @@ header {
 
 .cards {
 	background-colour: #fffff:
-	width: 60%:
-	padding:10 px;
-	margin-bottom : 5 px;
-	border-radius:2px;
+	width : 60%:
+	padding :10 px;
+	margin: 25 px;
+	border-radius :2 px;
 	strong{
 	font-weight:bold;
     }
