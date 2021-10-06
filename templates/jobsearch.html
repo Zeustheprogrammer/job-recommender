@@ -2,124 +2,97 @@
 
 {% block head %}
 
-      
 
-       <title>Job Search</title>
+
+<title>Job Search</title>
 
 {% endblock %}
 
 {% block navibar %}
 
-  <!-- MENU LINKS -->
+<!-- MENU LINKS -->
 
-  <div class="collapse navbar-collapse">
+<div class="collapse navbar-collapse">
 
-     <ul class="nav navbar-nav navbar-nav-first">
+  <ul class="nav navbar-nav navbar-nav-first">
 
-          <li class="active"><a href="{{url_for('jobsearch')}}">Job Search</a></li>
+    <li class="active"><a href="{{url_for('jobsearch')}}">Job Search</a></li>
 
-          <li><a href="{{url_for('aboutus')}}">About Us</a></li>
+    <li><a href="{{url_for('aboutus')}}">About Us</a></li>
 
-          <li class="dropdown">
+    <li><a href="{{url_for('contactus')}}">Contact Us</a></li>
 
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
+  </ul>
 
-               <ul class="dropdown-menu">
+  {% endblock %}
+  {% block body %}
 
-                    <li><a href="{{url_for('developerinfo')}}">Developer info</a></li>
+  <body>
 
-                    <li><a href="{{url_for('terms')}}">Terms</a></li>
+    <header>
 
-               </ul>
+      <div class="container">
 
-          </li>
+        <h1>Job Search App</h1>
 
-          <li><a href="{{url_for('contactus')}}">Contact Us</a></li>
+        <h2>Find your perfect job today!</h2>
 
-     </ul>
-
-{% endblock %}
-{% block body %}
-<body>
-
-  <header>
-
-    <div class="container">
-
-      <h1>Job Search App</h1>
-
-      <h2>Find your perfect job today!</h2>
-
-      <form action= "{{url_for('jobsearch')}}"method="post">
+        <form action="{{url_for('jobsearch')}}" method="post">
 
           <input type="text" class="form-control" placeholder="Job Title" name="search">
 
           <input type="text" class="form-control" placeholder="Location" name="location">
 
-	  <button class="btn btn-block btn-primary">Search</button>        </form>
+          <button class="btn btn-block btn-primary">Search</button>
+        </form>
 
-    </div>
+      </div>
 
-  </header>
+    </header>
 
-  <main>
+    <main>
 
-    <div class="container">
-
-        
-
-	    <div class="result-container">
-
-		 
-
-			    {% for data in data %}
-
-			    <div class="cards">
-				 
-
-				    <h4>{{data["title"] | safe}}</h4>
-
-				    <h5> {{data["location"]["display_name"] | safe}}</h5>
-
-				    <p> {{data['description'] | safe}}</p>
-
-				<button class="button"><b>   <a href = "{{data["redirect_url"]}}">View Job </a> </b> </button>
-
-			            </div>
-				
-		            
-				    
-				
-				
-
-			    {% endfor %}
-		    
-
-  
-
-  
-
-  </div>
-
-    </div>
-
-  </main>
-<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-<df-messenger
-  intent="WELCOME"
-  chat-title="Likhi"
-  agent-id="9c109821-94de-4bc8-979f-3693d3aae226"
-  language-code="en"
-></df-messenger>
-  {% endblock %}
-
-
-  
-
-  
+      <div class="container">
 
 
 
-                     
+        <div class="result-container">
 
-	    
+
+
+          {% for data in data %}
+
+          <div class="cards">
+
+
+            <h4>{{data["title"] | safe}}</h4>
+
+            <h5> {{data["location"]["display_name"] | safe}}</h5>
+
+            <p> {{data['description'] | safe}}</p>
+
+            <button class="button"><b> <a href="{{data["redirect_url"]}}">View Job </a> </b> </button>
+
+          </div>
+
+
+
+
+
+
+          {% endfor %}
+
+
+
+
+
+
+        </div>
+
+      </div>
+
+    </main>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger intent="WELCOME" chat-title="Likhi" agent-id="9c109821-94de-4bc8-979f-3693d3aae226"
+      language-code="en"></df-messenger>
+    {% endblock %}

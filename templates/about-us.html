@@ -1,38 +1,30 @@
 {% extends 'base.html' %}
 
 {% block head %}
-     <title>About US</title>
+<title>About US</title>
 {% endblock %}
 
 {% block navibar %}
-  <!-- MENU LINKS -->
-  <div class="collapse navbar-collapse">
+<!-- MENU LINKS -->
+<div class="collapse navbar-collapse">
      <ul class="nav navbar-nav navbar-nav-first">
-	     {% if g.firstname %}
-	     <li ><a href="{{url_for('jobsearch')}}">Job Search</a></li>
-	     {% else %}
-	     <li ><a href="{{url_for('home')}}">Home</a></li>
-	     {% endif %}
+          {% if g.firstname %}
+          <li><a href="{{url_for('jobsearch')}}">Job Search</a></li>
+          {% else %}
+          <li><a href="{{url_for('home')}}">Home</a></li>
+          {% endif %}
           <li class="active"><a href="{{url_for('aboutus')}}">About Us</a></li>
-          <li class="dropdown">
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
-               
-               <ul class="dropdown-menu">
-                    <li><a href="{{url_for('developerinfo')}}">Developer info</a></li>
-                    <li><a href="{{url_for('terms')}}">Terms</a></li>
-               </ul>
-          </li>
           <li><a href="{{url_for('contactus')}}">Contact Us</a></li>
-    
-     </ul>                        
-     
-{% endblock %}
 
-{% block body %}
+     </ul>
+
+     {% endblock %}
+
+     {% block body %}
      <section>
           <div class="container">
                <div class="text-center">
-                    <h1>About Us</h1>                   
+                    <h1>About Us</h1>
                </div>
           </div>
      </section>
@@ -41,7 +33,8 @@
           <div class="container">
                <div class="row">
                     <div class="col-md-offset-1 col-md-4 col-xs-12 pull-right">
-                         <img src="{{url_for('static', filename='images/about-1-720x720.jpg')}}" class="img-responsive img-circle" alt="">
+                         <img src="{{url_for('static', filename='images/about-1-720x720.jpg')}}"
+                              class="img-responsive img-circle" alt="">
                     </div>
 
                     <div class="col-md-7 col-xs-12">
@@ -50,7 +43,10 @@
 
                               <figure>
                                    <figcaption>
-                                        <p>Don't need to worry! we have come up with a skill recommender solution through which the fresher or the skilled person can login and find the jobs by using the search option or they can directly interact with the chatbot and get their dream job.</p>                                        
+                                        <p>Don't need to worry! we have come up with a skill recommender solution
+                                             through which the fresher or the skilled person can login and find the jobs
+                                             by using the search option or they can directly interact with the chatbot
+                                             and get their dream job.</p>
                                    </figcaption>
                               </figure>
                          </div>
@@ -63,7 +59,8 @@
           <div class="container">
                <div class="row">
                     <div class="col-md-4 col-xs-12">
-                         <img src="{{url_for('static', filename='images/about-2-720x720.jpg')}}" class="img-responsive img-circle" alt="">
+                         <img src="{{url_for('static', filename='images/about-2-720x720.jpg')}}"
+                              class="img-responsive img-circle" alt="">
                     </div>
 
                     <div class="col-md-offset-1 col-md-7 col-xs-12">
@@ -72,7 +69,13 @@
 
                               <figure>
                                    <figcaption>
-                                        <p>We developed an end to end web application capable of displaying the current job openings based on the skillset of the users. The users and their information are stored securely in our database and protected from data breaches. The user can interact with the chatbot and can get recommendations based on his/her skills. We used adzuna job search api to get the current job openings in the market which will fetch the data directly from the webpage.</p>
+                                        <p>We developed an end to end web application capable of displaying the current
+                                             job openings based on the skillset of the users. The users and their
+                                             information are stored securely in our database and protected from data
+                                             breaches. The user can interact with the chatbot and can get
+                                             recommendations based on his/her skills. We used adzuna job search api to
+                                             get the current job openings in the market which will fetch the data
+                                             directly from the webpage.</p>
                                    </figcaption>
                               </figure>
                          </div>
@@ -80,4 +83,4 @@
                </div>
           </div>
      </section>
-{% endblock %}
+     {% endblock %}

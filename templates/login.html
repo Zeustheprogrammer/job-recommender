@@ -1,107 +1,112 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Sign-Up/Login </title>
-  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="{{url_for('static', filename='css/style1.css')}}">
+  <link href='https://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/style1.css')}}">
 
 </head>
+
 <body>
-  
+
   {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
-     {% for category, message in messages %}
-        <div class="alert alert-{{ category }}">
-            <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            {{ message }}
-        </div>
-     {% endfor %}
+  {% for category, message in messages %}
+  <div class="alert alert-{{ category }}">
+    <button type="button" class="m1-2 mb-1 close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {{ message }}
+  </div>
+  {% endfor %}
   {% endif %}
-{% endwith %}
-<!-- partial:index.partial.html -->
-<div class="form">
-      
-      <ul class="tab-group">
-        <li class="tab active"><a href="#signup">Sign Up</a></li>
-        <li class="tab"><a href="#login">Log In</a></li>
-      </ul>
-      
-      <div class="tab-content">
-        <div id="signup">   
-          <h1>Sign Up for Free</h1>
-          
-          <form action="/register" method="post">
-                 
+  {% endwith %}
+  <!-- partial:index.partial.html -->
+  <div class="form">
+
+    <ul class="tab-group">
+      <li class="tab active"><a href="#signup">Sign Up</a></li>
+      <li class="tab"><a href="#login">Log In</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="signup">
+        <h1>Sign Up for Free</h1>
+
+        <form action="/register" method="post">
+
           <div class="top-row">
             <div class="field-wrap">
               <label>
                 First Name<span class="req">*</span>
               </label>
-              <input type="text" required autocomplete="off" name="firstname"/>
+              <input type="text" required autocomplete="off" name="firstname" />
             </div>
-        
+
             <div class="field-wrap">
               <label>
                 Last Name<span class="req">*</span>
               </label>
-              <input type="text"required autocomplete="off" name="lastname"/>
+              <input type="text" required autocomplete="off" name="lastname" />
             </div>
           </div>
           <div class="field-wrap">
             <label>
               Email Address<span class="req">*</span>
             </label>
-            <input type="email"required autocomplete="off" name="email"/>
+            <input type="email" required autocomplete="off" name="email" />
           </div>
-          
+
           <div class="field-wrap">
             <label>
               Set A Password<span class="req">*</span>
             </label>
-            <input type="password"required autocomplete="off" name="password"/>
+            <input type="password" required autocomplete="off" name="password" />
           </div>
-          
-          <button type="submit" class="button button-block"/>Get Started</button>
-          
-          </form>
 
-        </div>
-        
-        <div id="login">   
-          <h1>Welcome Back!</h1>
-          
-          <form action="/login" method="post">
-            
-            <div class="field-wrap">
+          <button type="submit" class="button button-block" />Get Started</button>
+
+        </form>
+
+      </div>
+
+      <div id="login">
+        <h1>Welcome Back!</h1>
+
+        <form action="/login" method="post">
+
+          <div class="field-wrap">
             <label>
               Email Address<span class="req">*</span>
             </label>
-            <input type="email"required autocomplete="off" name="email"/>
+            <input type="email" required autocomplete="off" name="email" />
           </div>
-          
+
           <div class="field-wrap">
             <label>
               Password<span class="req">*</span>
             </label>
-            <input type="password"required autocomplete="off" name="password"/>
+            <input type="password" required autocomplete="off" name="password" />
           </div>
-          
-         
-          
-          <button class="button button-block"/>Log In</button>
-          
-          </form>
 
-        </div>
-        
-      </div><!-- tab-content -->
-      
-</div> <!-- /form -->
-<!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="{{url_for('static', filename='js/script.js')}}"></script>
+
+
+          <button class="button button-block" />Log In</button>
+
+        </form>
+
+      </div>
+
+    </div><!-- tab-content -->
+
+  </div> <!-- /form -->
+  <!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src="{{url_for('static', filename='js/script.js')}}"></script>
 
 </body>
+
 </html>
