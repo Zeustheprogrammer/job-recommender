@@ -3,3 +3,4 @@ requests
 flask_bcrypt
 flask_mysqldb
 python-dotenv
+flask_sqlalchemy
