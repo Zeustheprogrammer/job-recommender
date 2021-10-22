@@ -202,7 +202,7 @@ def jobsearch():
             what = request.form['search']
             where = request.form['location']
             try :
-                req=requests.get(f'https://api.adzuna.com/v1/api/jobs/in/search/1?app_id={os.getenv("APP_ID")}&app_key={os.getenv("APP_KEY")}&results_per_page=50&what={what}&where={where}&content-type=application/json')
+                req=requests.get(f'https://api.adzuna.com/v1/api/jobs/in/search/1?app_id=e37ee2b8&app_key=bee4526282b85f00215f62e328cc839d&results_per_page=50&what={what}&where={where}&content-type=application/json')
                 data=json.loads(req.content)
                 print(len(data))
                 return render_template('jobsearch.html', data=data["results"])
@@ -219,7 +219,7 @@ def jobsearch():
 def jobsearch1(what,where,salary_min):
     if g.firstname:
         try:   
-            req=requests.get(f'https://api.adzuna.com/v1/api/jobs/in/search/1?app_id={os.getenv("APP_ID")}&app_key={os.getenv("APP_KEY")}&results_per_page=50&what={what}&where={where}&salary_min={salary_min}&content-type=application/json')
+            req=requests.get(f'https://api.adzuna.com/v1/api/jobs/in/search/1?app_id=e37ee2b8&app_key=bee4526282b85f00215f62e328cc839d&results_per_page=50&what={what}&where={where}&salary_min={salary_min}&content-type=application/json')
             data = json.loads(req.content) 
         
             return render_template('jobsearch.html', data=data["results"])
