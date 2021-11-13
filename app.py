@@ -54,33 +54,29 @@ def home():
 @app.route('/login',methods =['GET', 'POST'])
 def login():
      
-    if request.method == 'POST' :
-        try:
-        
-            """email = request.form['email']
-            password = request.form['password']
-            cursor = mysql.connection.cursor() 
-            cursor.execute('SELECT * FROM user WHERE email = % s ', (email,))
-            user = cursor.fetchone()"""
-            user = User.query.filter_by(email=request.form['email']).first()  
-            if user:
-                session.pop('firstname',None)
+    if request.method == 'POST' :       
+        """email = request.form['email']
+        password = request.form['password']
+        cursor = mysql.connection.cursor() 
+        cursor.execute('SELECT * FROM user WHERE email = % s ', (email,))
+        user = cursor.fetchone()"""
+        user = User.query.filter_by(email=request.form['email']).first()  
+        if user:
+            session.pop('firstname',None)
 
-                if (bcrypt.check_password_hash(user.password,request.form['password'])) == True :
-                    session['loggedin'] = True
-                    session['id'] = user.id             
-                    session['firstname'] = user.firstname           
-                    flash('Success! You are logged in as: ' + session['firstname'], category='success')
-                    return redirect(url_for('jobsearch'))
-                else:
-                    flash('Username and password are not match! Please try again', category='danger')
-                    return render_template('login.html')
+            if (bcrypt.check_password_hash(user.password,request.form['password'])) == True :
+                session['loggedin'] = True
+                session['id'] = user.id             
+                session['firstname'] = user.firstname           
+                flash('Success! You are logged in as: ' + session['firstname'], category='success')
+                return redirect(url_for('jobsearch'))
             else:
                 flash('Username and password are not match! Please try again', category='danger')
                 return render_template('login.html')
-        except :
-            flash("Error: In Our Database, Please Try Again Later With Valid Details", category='danger') 
+        else:
+            flash('Username and password are not match! Please try again', category='danger')
             return render_template('login.html')
+
 
     else:
         return render_template('login.html')
@@ -94,40 +90,32 @@ def register():
         """firstname = request.form['firstname']
         lastname = request.form['lastname']
         email = request.form['email']"""
-        pwd = request.form['password']
+       
+
+        """cursor = mysql.connection.cursor()
+        cursor.execute('SELECT * FROM user WHERE email = % s', (email, ))
+        user = cursor.fetchone()"""
+        user = User.query.filter_by(email=request.form['email']).first()
+        if user:
+            flash('Email already exists !', category='danger')
             
-        hash_password = bcrypt.generate_password_hash(pwd)
+        else:
+            pwd = request.form['password']           
+            hash_password = bcrypt.generate_password_hash(pwd)
             
-        try:
+            new_user = User(firstname=request.form['firstname'],lastname=request.form['lastname'],email=request.form['email'],password=hash_password)
+            db.session.add(new_user)
+            db.session.commit()
+
             """cursor = mysql.connection.cursor()
-            cursor.execute('SELECT * FROM user WHERE email = % s', (email, ))
-            user = cursor.fetchone()"""
-            user = User.query.filter_by(email=request.form['email']).first()
-            if user:
-                flash('Email already exists !', category='danger')
-            
-            else:
-                new_user = User(firstname=request.form['firstname'],lastname=request.form['lastname'],email=request.form['email'],password=hash_password)
-                db.session.add(new_user)
-                db.session.commit()
-
-                """cursor = mysql.connection.cursor()
-                cursor.execute('INSERT INTO user VALUES (NULL, % s, % s, % s, % s)',(firstname, lastname, email, hash_password))
-                mysql.connection.commit()"""
-                flash("Account created successfully!", category='success')
-        except:
-            flash("Error: In Our Database, Please Try Again Later With Valid Details", category='danger') 
-        try:        
-                message = "Hello "+request.form['firstname'] + ",\n\n"+ "Thanks for registring at our job recommender website" 
-                server = smtplib.SMTP("smtp.gmail.com",587)
-                server.starttls()
-                server.login(os.getenv("GMAIL"),os.getenv("PASS"))
-                server.sendmail(os.getenv("GMAIL"), request.form['email'], message)
-      
-        except :
-            flash("Sorry, due to some technical issues we are unable to send you welcome email", category='danger')   
-
-
+            cursor.execute('INSERT INTO user VALUES (NULL, % s, % s, % s, % s)',(firstname, lastname, email, hash_password))
+            mysql.connection.commit()"""
+            flash("Account created successfully!", category='success')                      
+            message = "Hello "+request.form['firstname'] + ",\n\n"+ "Thanks for registring at our job recommender website" 
+            server = smtplib.SMTP("smtp.gmail.com",587)
+            server.starttls()
+            server.login(os.getenv("GMAIL"),os.getenv("PASS"))
+            server.sendmail(os.getenv("GMAIL"), request.form['email'], message)               
     return render_template('login.html')
 
 
@@ -142,14 +130,12 @@ def contactus():
         name = request.form['name']
         email = request.form['email']
         message = request.form['message']
-        try :
-            server = smtplib.SMTP("smtp.gmail.com",587)
-            server.starttls()
-            server.login(os.getenv("GMAIL"),os.getenv("PASS"))
-            server.sendmail(os.getenv("GMAIL"),"abbojushanthan@gmail.com","From " + name + ",\n"+ email +",\n\n"+ message)
-            flash("You have succesfully contacted us, we will soon look through it", category='success')
-        except :
-             flash("We are facing some technical issues, Please Try Again Later", category='danger')         
+        server = smtplib.SMTP("smtp.gmail.com",587)
+        server.starttls()
+        server.login(os.getenv("GMAIL"),os.getenv("PASS"))
+        server.sendmail(os.getenv("GMAIL"),"abbojushanthan@gmail.com","From " + name + ",\n"+ email +",\n\n"+ message)
+        flash("You have succesfully contacted us, we will soon look through it", category='success')
+          
         if g.firstname: 
             return redirect(url_for('jobsearch'))
         else :
@@ -163,32 +149,26 @@ def newsletter():
     if request.method == 'POST' :
  
         mail = request.form['email']
-        try:
-            """cursor = mysql.connection.cursor()
-            cursor.execute('SELECT * FROM newsletter WHERE email = % s', (email, ))
-            user = cursor.fetchone()
-            print(user)"""
-            user = Newsletter.query.filter_by(email=mail).first()
-            if user:
-                flash('Account already exists !', category='danger')
+       
+        """cursor = mysql.connection.cursor()
+        cursor.execute('SELECT * FROM newsletter WHERE email = % s', (email, ))
+        user = cursor.fetchone()
+        print(user)"""
+        user = Newsletter.query.filter_by(email=mail).first()
+        if user:
+            flash('Account already exists !', category='danger')
             
-            else:
-                new_user = Newsletter(email=request.form['email'])
-                db.session.add(new_user)
-                db.session.commit()
-        except:
-                flash("Error: In Our Database, Please Try Again Later With Valid Details", category='danger')    
-        try :
-                flash("Successfully signed up for newsletter!", category='success')
-                message = "Hello " + ",\n\n"+ "Thanks for registring our newsletter at our job recommender website" 
-                server = smtplib.SMTP("smtp.gmail.com",587)
-                server.starttls()
-                server.login(os.getenv("GMAIL"),os.getenv("PASS"))
-                server.sendmail(os.getenv("GMAIL"), request.form['email'], message)
-        except :
-            flash("Sorry, due to some technical issues we are unable to send you welcome email", category='danger')       
-
-
+        else:
+            new_user = Newsletter(email=request.form['email'])
+            db.session.add(new_user)
+            db.session.commit()        
+            flash("Successfully signed up for newsletter!", category='success')
+            message = "Hello " + ",\n\n"+ "Thanks for registring our newsletter at our job recommender website" 
+            server = smtplib.SMTP("smtp.gmail.com",587)
+            server.starttls()
+            server.login(os.getenv("GMAIL"),os.getenv("PASS"))
+            server.sendmail(os.getenv("GMAIL"), request.form['email'], message)
+      
     if g.firstname: 
         return redirect(url_for('jobsearch'))
     else :
@@ -201,14 +181,12 @@ def jobsearch():
         if request.method == 'POST':
             what = request.form['search']
             where = request.form['location']
-            try :
-                req=requests.get(f'https://api.adzuna.com/v1/api/jobs/in/search/1?app_id=e37ee2b8&app_key=bee4526282b85f00215f62e328cc839d&results_per_page=50&what={what}&where={where}&content-type=application/json')
-                data=json.loads(req.content)
-                print(len(data))
-                return render_template('jobsearch.html', data=data["results"])
+
+            req=requests.get(f'https://api.adzuna.com/v1/api/jobs/in/search/1?app_id=e37ee2b8&app_key=bee4526282b85f00215f62e328cc839d&results_per_page=50&what={what}&where={where}&content-type=application/json')
+            data=json.loads(req.content)
+            return render_template('jobsearch.html', data=data["results"])
                 
-            except :
-                flash("We are facing some technical issues, Please Try Again Later", category='danger')             
+           
         else:
             return render_template('jobsearch.html')
     else:
@@ -218,14 +196,13 @@ def jobsearch():
 @app.route('/jobsearch/<what>/<where>/<salary_min>')
 def jobsearch1(what,where,salary_min):
     if g.firstname:
-        try:   
-            req=requests.get(f'https://api.adzuna.com/v1/api/jobs/in/search/1?app_id=e37ee2b8&app_key=bee4526282b85f00215f62e328cc839d&results_per_page=50&what={what}&where={where}&salary_min={salary_min}&content-type=application/json')
-            data = json.loads(req.content) 
+
+        req=requests.get(f'https://api.adzuna.com/v1/api/jobs/in/search/1?app_id=e37ee2b8&app_key=bee4526282b85f00215f62e328cc839d&results_per_page=50&what={what}&where={where}&salary_min={salary_min}&content-type=application/json')
+        data = json.loads(req.content) 
         
-            return render_template('jobsearch.html', data=data["results"])
+        return render_template('jobsearch.html', data=data["results"])
            
-        except :
-            flash("We are facing some technical issues, Please Try Again Later", category='danger')     
+            
     else:
         return redirect(url_for('login'))
   
